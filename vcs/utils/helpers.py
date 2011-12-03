@@ -118,31 +118,6 @@ def run_command(cmd, *args):
     return p.retcode, stdout, stderr
 
 
-def get_highlighted_code(name, code, type='terminal'):
-    """
-    If pygments are available on the system
-    then returned output is colored. Otherwise
-    unchanged content is returned.
-    """
-    import logging
-    try:
-        import pygments
-        pygments
-    except ImportError:
-        return code
-    from pygments import highlight
-    from pygments.lexers import guess_lexer_for_filename, ClassNotFound
-    from pygments.formatters import TerminalFormatter
-
-    try:
-        lexer = guess_lexer_for_filename(name, code)
-        formatter = TerminalFormatter()
-        content = highlight(code, lexer, formatter)
-    except ClassNotFound:
-        logging.debug("Couldn't guess Lexer, will not use pygments.")
-        content = code
-    return content
-
 def parse_changesets(text):
     """
     Returns dictionary with *start*, *main* and *end* ids.

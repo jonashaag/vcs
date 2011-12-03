@@ -731,8 +731,6 @@ class GitChangeset(BaseChangeset):
         if stream is None:
             raise VCSError('You need to pass in a valid stream for filling'
                            ' with archival data')
-        else:
-            arch_path = None
 
         popen = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True,
             cwd=self.repository.path)

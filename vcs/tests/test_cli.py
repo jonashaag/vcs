@@ -1,6 +1,5 @@
 from __future__ import with_statement
 
-import inspect
 import mock
 import sys
 import vcs
